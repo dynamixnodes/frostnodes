@@ -19,25 +19,34 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
-  overflow:hidden
+  overflow:hidden;
 }
 
 .container{
   max-width:600px;
-  padding:40px
+  padding:40px;
 }
 
 .logo{
-  font-size:42px;
-  font-weight:700;
-  color:#5cc8ff;
-  margin-bottom:10px
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-bottom:10px;
 }
 
-.snow{
-  font-size:90px;
+.logo img{
+  width:60px;
+  height:60px;
   animation:float 2.5s infinite ease-in-out;
-  margin:20px 0
+}
+
+.logo span{
+  font-size:42px;
+  font-weight:700;
+  background: linear-gradient(135deg,#5cc8ff,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 @keyframes float{
@@ -47,35 +56,38 @@ body{
 
 h1{
   font-size:72px;
-  color:#5cc8ff
+  background: linear-gradient(135deg,#5cc8ff,#00ffff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin:20px 0;
 }
 
 p{
   color:#bbb;
   margin:18px 0 30px;
-  font-size:16px
+  font-size:16px;
 }
 
 a{
   display:inline-block;
   padding:12px 26px;
-  background:#5cc8ff;
+  background: linear-gradient(135deg,#5cc8ff,#00ffff);
   color:#000;
   text-decoration:none;
   border-radius:8px;
   font-weight:600;
-  transition:.3s
+  transition:.3s;
 }
 
 a:hover{
   transform:scale(1.05);
-  box-shadow:0 15px 35px rgba(92,200,255,.35)
+  box-shadow:0 15px 35px rgba(92,200,255,.35);
 }
 
 .footer{
   margin-top:40px;
   font-size:13px;
-  color:#666
+  color:#666;
 }
 </style>
 </head>
@@ -83,9 +95,10 @@ a:hover{
 <body>
 
 <div class="container">
-  <div class="logo">❄ FrostNodes</div>
-
-  <div class="snow">❄</div>
+  <div class="logo">
+    <img src="logo.png" alt="FrostNodes Logo">
+    <span>FrostNodes</span>
+  </div>
 
   <h1>404</h1>
   <p>The page you’re looking for doesn’t exist or has been moved.</p>
