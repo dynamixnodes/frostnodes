@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <title>FrostNodes | AI</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
@@ -20,42 +19,54 @@
 }
 
 /* GLOBAL */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Poppins,sans-serif;
-}
-body{
-  background:var(--bg);
-  color:var(--text);
-}
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:var(--bg);color:var(--text);position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
 
 /* HEADER */
 header{
   text-align:center;
   padding:60px 20px 30px;
 }
-header h1{
-  font-size:48px;
+header .logo-header{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+}
+header .logo-header img{
+  width:80px;
+  height:80px;
+}
+header .logo-header span{
+  font-size:42px;
+  font-weight:700;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-header p{
-  color:var(--text-muted);
-  font-size:18px;
+header .frost-ai-title{
+  font-size:32px;
+  color:#fff;
   margin-top:10px;
+  animation:float 2.5s infinite ease-in-out;
+}
+
+/* FLOATING ANIMATION */
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-18px);}
 }
 
 /* CHAT CONTAINER */
 .chat-container{
   max-width:700px;
-  margin:30px auto 60px;
+  margin:30px auto 80px;
   background:var(--card);
   border-radius:12px;
   padding:20px;
   box-shadow:0 0 20px rgba(92,200,255,0.3);
+  flex-grow:1;
+  width:90%;
 }
 
 /* CHAT BOX */
@@ -76,23 +87,14 @@ header p{
 }
 .chat-message.user{justify-content:flex-end;}
 .chat-message.bot{justify-content:flex-start;}
-
 .message{
   padding:10px 14px;
   border-radius:12px;
   max-width:70%;
   word-wrap:break-word;
 }
-.chat-message.user .message{
-  background:var(--accent);
-  color:#000;
-  border-radius:12px 12px 0 12px;
-}
-.chat-message.bot .message{
-  background:var(--card);
-  color:#fff;
-  border-radius:12px 12px 12px 0;
-}
+.chat-message.user .message{background:var(--accent);color:#000;border-radius:12px 12px 0 12px;}
+.chat-message.bot .message{background:var(--card);color:#fff;border-radius:12px 12px 12px 0;}
 
 /* INPUT AND BUTTON */
 .input-container{
@@ -107,10 +109,8 @@ input[type="text"]{
   background:var(--nav);
   color:#fff;
 }
-input::placeholder{
-  color:#777;
-}
-button{
+input::placeholder{color:#777;}
+button.send-btn{
   padding:12px 20px;
   border:none;
   border-radius:8px;
@@ -120,49 +120,88 @@ button{
   cursor:pointer;
   transition:.3s;
 }
-button:hover{
+button.send-btn:hover{
   box-shadow:0 0 18px rgba(92,200,255,.4);
+  transform:scale(1.05);
+}
+
+/* GO BACK BUTTON */
+.go-back{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  padding:14px 24px;
+  background:linear-gradient(135deg,#5cc8ff,#00ffff);
+  color:#000;
+  font-weight:600;
+  border:none;
+  border-radius:10px;
+  cursor:pointer;
+  transition:.3s;
+  text-decoration:none;
+}
+.go-back:hover{
+  box-shadow:0 0 20px rgba(92,200,255,0.5);
   transform:scale(1.05);
 }
 
 /* FOOTER */
 footer{
   text-align:center;
-  padding:30px;
+  padding:20px;
   color:#777;
-}
-
-/* RESPONSIVE */
-@media(max-width:600px){
-  .chat-box{height:300px;}
-  header h1{font-size:36px;}
 }
 </style>
 </head>
 <body>
 
-<!-- HEADER -->
 <header>
-  <h1>Frost AI</h1>
-  <p>Your hosting assistant — VPS, Minecraft, Bot & Domain help, powered by ChatGPT AI.</p>
+  <div class="logo-header">
+    <img src="logo.png" alt="FrostNodes Logo">
+    <span>FrostNodes</span>
+  </div>
+  <div class="frost-ai-title">Frost AI</div>
 </header>
 
-<!-- CHAT INTERFACE -->
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input type="text" id="userInput" placeholder="Ask me about VPS, Minecraft servers, or hosting...">
-    <button onclick="sendMessage()">Send</button>
+    <input type="text" id="userInput" placeholder="Ask me about hosting...">
+    <button class="send-btn" onclick="sendMessage()">Send</button>
   </div>
 </div>
 
-<!-- FOOTER -->
+<a href="/" class="go-back">Go Back</a>
+
 <footer>
   © 2026 FrostNodes — All rights reserved
 </footer>
 
 <script>
-// Basic JS for displaying messages
+// Hosting-focused AI logic
+function getBotReply(message){
+  const msg = message.toLowerCase();
+
+  // Custom answers
+  if(msg.includes("what is frostnodes")){
+    return "FrostNodes is a next-gen IT & hosting company providing VPS, Minecraft servers, Bot Hosting, and Domain services.";
+  }
+  if(msg.includes("who is your creator")){
+    return "My creator is Dynamind.";
+  }
+  if(msg.includes("powered by")){
+    return "I am powered by ChatGPT.";
+  }
+
+  // Hosting-related keywords
+  if(msg.includes("vps") || msg.includes("minecraft") || msg.includes("bot") || msg.includes("domain") || msg.includes("hosting")){
+    return "I can provide detailed information about our VPS, Minecraft servers, Bot Hosting, and Domain plans. Ask me specifics!";
+  }
+
+  // Default fallback
+  return "I can only answer questions about FrostNodes and hosting services. Try asking about VPS, Minecraft, Bot Hosting, or Domains.";
+}
+
 async function sendMessage(){
   const input = document.getElementById('userInput');
   const chatBox = document.getElementById('chatBox');
@@ -178,19 +217,18 @@ async function sendMessage(){
   input.value = '';
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  // Display bot typing
+  // Display bot typing animation
   const botMsg = document.createElement('div');
   botMsg.classList.add('chat-message','bot');
   botMsg.innerHTML = `<div class="message">Thinking...</div>`;
   chatBox.appendChild(botMsg);
   chatBox.scrollTop = chatBox.scrollHeight;
 
-  // TODO: Replace with your backend API for Frost AI
-  // Example using a dummy hosting-only response
+  // Simulate AI delay
   setTimeout(()=>{
-    botMsg.innerHTML = `<div class="message">I can help with VPS, Minecraft servers, Bot Hosting, and Domain plans. What would you like to know?</div>`;
+    botMsg.innerHTML = `<div class="message">${getBotReply(userText)}</div>`;
     chatBox.scrollTop = chatBox.scrollHeight;
-  },1200);
+  },900);
 }
 </script>
 
