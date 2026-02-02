@@ -10,21 +10,24 @@
 <style>
 :root{
   --accent:#5cc8ff;
+  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
   --bg:#0b0f1a;
   --nav:#0f1629;
   --card:#121a30;
   --border:#1c2a52;
+  --text:#fff;
+  --text-muted:#bbb;
 }
 
+/* GLOBAL */
 *{
   margin:0;
   padding:0;
   box-sizing:border-box;
 }
-
 body{
   background:var(--bg);
-  color:#fff;
+  color:var(--text);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
@@ -38,8 +41,8 @@ nav{
   position:sticky;
   top:0;
   z-index:1000;
+  box-shadow:0 2px 12px rgba(92,200,255,0.15);
 }
-
 nav a{
   color:#cfcfcf;
   text-decoration:none;
@@ -47,8 +50,9 @@ nav a{
   font-weight:500;
   transition:.25s;
 }
-nav a:hover{color:var(--accent)}
-
+nav a:hover{
+  color:var(--accent);
+}
 .logo{
   display:flex;
   align-items:center;
@@ -62,18 +66,14 @@ nav a:hover{color:var(--accent)}
 .logo span{
   font-size:22px;
   font-weight:700;
-  color:var(--accent);
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.menu{
-  display:flex;
-  align-items:center;
-}
-
-/* SERVICES DROPDOWN */
-.dropdown{
-  position:relative;
-}
+/* MENU */
+.menu{display:flex; align-items:center;}
+.dropdown{position:relative;}
 .dropdown-content{
   position:absolute;
   top:42px;
@@ -81,7 +81,7 @@ nav a:hover{color:var(--accent)}
   background:var(--card);
   min-width:220px;
   border-radius:10px;
-  box-shadow:0 20px 40px rgba(0,0,0,.6);
+  box-shadow:0 20px 40px rgba(92,200,255,.5);
   opacity:0;
   visibility:hidden;
   transform:translateY(10px);
@@ -91,12 +91,12 @@ nav a:hover{color:var(--accent)}
   display:block;
   padding:14px 18px;
   border-bottom:1px solid var(--border);
+  transition:.25s;
 }
-.dropdown-content a:last-child{
-  border-bottom:none;
-}
+.dropdown-content a:last-child{border-bottom:none;}
 .dropdown-content a:hover{
-  background:var(--border);
+  background:var(--accent-gradient);
+  color:#000;
   padding-left:24px;
 }
 .dropdown:hover .dropdown-content{
@@ -113,12 +113,13 @@ nav a:hover{color:var(--accent)}
   color:var(--accent);
   font-weight:600;
   text-decoration:none;
-  box-shadow:0 0 12px rgba(92,200,255,.25);
+  box-shadow:0 0 12px rgba(92,200,255,.35);
   transition:.25s;
 }
 .discord-box:hover{
-  background:var(--accent);
+  background:var(--accent-gradient);
   color:#000;
+  box-shadow:0 0 18px rgba(92,200,255,.55);
 }
 
 /* HERO */
@@ -140,7 +141,6 @@ nav a:hover{color:var(--accent)}
   animation:jump 1.8s infinite;
   box-shadow:0 0 18px rgba(92,200,255,.35);
 }
-
 @keyframes jump{
   0%,100%{transform:translateY(0)}
   50%{transform:translateY(-22px)}
@@ -150,10 +150,12 @@ nav a:hover{color:var(--accent)}
   font-size:46px;
 }
 .hero span{
-  color:var(--accent);
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .hero p{
-  color:#aaa;
+  color:var(--text-muted);
   max-width:680px;
   margin:20px auto;
 }
@@ -166,6 +168,9 @@ section h2{
   text-align:center;
   font-size:34px;
   margin-bottom:55px;
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
 .features{
@@ -181,19 +186,19 @@ section h2{
   border-radius:16px;
   transition:.35s;
 }
-
 .feature h3{
   margin-bottom:10px;
-  color:var(--accent);
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 .feature p{
-  color:#bbb;
+  color:var(--text-muted);
   font-size:14px;
 }
-
 .feature:hover{
   transform:translateY(-10px);
-  box-shadow:0 20px 40px rgba(92,200,255,.18);
+  box-shadow:0 20px 40px rgba(92,200,255,.25);
   border-color:var(--accent);
 }
 
@@ -229,7 +234,6 @@ footer{
 
   <div class="menu">
     <a href="/">Home</a>
-
     <div class="dropdown">
       <a href="#">Services ▾</a>
       <div class="dropdown-content">
@@ -239,7 +243,6 @@ footer{
         <a href="/domains">Domain Plan</a>
       </div>
     </div>
-
     <a href="/free">Free Plan</a>
     <a href="/about">About Us</a>
     <a href="/frost-ai">Frost AI</a>
