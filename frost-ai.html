@@ -23,38 +23,28 @@
 body{background:var(--bg);color:var(--text);position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;}
 
 /* HEADER */
-header{
-  text-align:center;
-  padding:60px 20px 30px;
-}
+header{text-align:center;padding:60px 20px 30px;}
 header .logo-header{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  gap:12px;
-}
-header .logo-header img{
-  width:80px;
-  height:80px;
+  font-size:48px;
+  font-weight:700;
+  color:#fff;
+  animation:float 2.5s infinite ease-in-out;
 }
 header .logo-header span{
-  font-size:42px;
-  font-weight:700;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
-header .frost-ai-title{
-  font-size:32px;
-  color:#fff;
+header .tagline{
+  font-size:18px;
+  color:var(--text-muted);
   margin-top:10px;
-  animation:float 2.5s infinite ease-in-out;
 }
 
 /* FLOATING ANIMATION */
 @keyframes float{
   0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-18px);}
+  50%{transform:translateY(-12px);}
 }
 
 /* CHAT CONTAINER */
@@ -67,6 +57,7 @@ header .frost-ai-title{
   box-shadow:0 0 20px rgba(92,200,255,0.3);
   flex-grow:1;
   width:90%;
+  border:2px solid #5cc8ff;
 }
 
 /* CHAT BOX */
@@ -74,17 +65,14 @@ header .frost-ai-title{
   height:400px;
   overflow-y:auto;
   padding:10px;
-  border:1px solid var(--border);
+  border:2px solid #00ffff;
   border-radius:8px;
   margin-bottom:15px;
   background:var(--nav);
 }
 
 /* MESSAGES */
-.chat-message{
-  margin:8px 0;
-  display:flex;
-}
+.chat-message{margin:8px 0;display:flex;}
 .chat-message.user{justify-content:flex-end;}
 .chat-message.bot{justify-content:flex-start;}
 .message{
@@ -94,18 +82,19 @@ header .frost-ai-title{
   word-wrap:break-word;
 }
 .chat-message.user .message{background:var(--accent);color:#000;border-radius:12px 12px 0 12px;}
-.chat-message.bot .message{background:var(--card);color:#fff;border-radius:12px 12px 12px 0;}
+.chat-message.bot .message{background:var(--card);color:#fff;border-radius:12px 12px 12px 0;display:flex;align-items:center;gap:6px;}
+
+/* LOADING SPIN */
+@keyframes spin{0%{transform:rotate(0deg);}100%{transform:rotate(360deg);}}
+.loading-symbol{display:inline-block;animation:spin 1s linear infinite;}
 
 /* INPUT AND BUTTON */
-.input-container{
-  display:flex;
-  gap:10px;
-}
+.input-container{display:flex;gap:10px;}
 input[type="text"]{
   flex:1;
   padding:12px;
   border-radius:8px;
-  border:1px solid var(--border);
+  border:1px solid #1c2a52;
   background:var(--nav);
   color:#fff;
 }
@@ -117,6 +106,7 @@ button.send-btn{
   background:var(--accent-gradient);
   color:#000;
   font-weight:600;
+  font-size:20px;
   cursor:pointer;
   transition:.3s;
 }
@@ -140,66 +130,54 @@ button.send-btn:hover{
   transition:.3s;
   text-decoration:none;
 }
-.go-back:hover{
-  box-shadow:0 0 20px rgba(92,200,255,0.5);
-  transform:scale(1.05);
-}
+.go-back:hover{box-shadow:0 0 20px rgba(92,200,255,0.5);transform:scale(1.05);}
 
 /* FOOTER */
-footer{
-  text-align:center;
-  padding:20px;
-  color:#777;
-}
+footer{text-align:center;padding:20px;color:#777;}
+@media(max-width:600px){.chat-box{height:300px;}header .logo-header{font-size:36px;}header .tagline{font-size:16px;}}
 </style>
 </head>
 <body>
 
 <header>
-  <div class="logo-header">
-    <img src="logo.png" alt="FrostNodes Logo">
-    <span>FrostNodes</span>
-  </div>
-  <div class="frost-ai-title">Frost AI</div>
+  <div class="logo-header">FrostNodes <span>AI</span></div>
+  <div class="tagline">Your hosting assistant — VPS, Minecraft, Bot & Domain help, powered by AI.</div>
 </header>
 
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input type="text" id="userInput" placeholder="Ask me about hosting...">
-    <button class="send-btn" onclick="sendMessage()">Send</button>
+    <input type="text" id="userInput" placeholder="Ask me about hosting, VPS, Minecraft servers...">
+    <button class="send-btn" onclick="sendMessage()">➣</button>
   </div>
 </div>
 
-<a href="/" class="go-back">Go Back</a>
+<a href="index.html" class="go-back">Go Back</a>
 
-<footer>
-  © 2026 FrostNodes — All rights reserved
-</footer>
+<footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-// Hosting-focused AI logic
 function getBotReply(message){
-  const msg = message.toLowerCase();
+  const msg = message.toLowerCase().trim();
 
-  // Custom answers
-  if(msg.includes("what is frostnodes")){
-    return "FrostNodes is a next-gen IT & hosting company providing VPS, Minecraft servers, Bot Hosting, and Domain services.";
-  }
-  if(msg.includes("who is your creator")){
-    return "My creator is Dynamind.";
-  }
-  if(msg.includes("powered by")){
-    return "I am powered by ChatGPT.";
-  }
+  // Greetings
+  if(msg.match(/\b(hello|hi|hey)\b/)) return "Hello! 👋 How can I assist you with hosting today?";
+  if(msg.match(/\b(thank you|thanks)\b/)) return "You're welcome! 😊 Need help with VPS, Minecraft, Bots, or Domains?";
+  if(msg.includes("please") || msg.includes("pls")) return "Sure! 😄 How can I help?";
 
-  // Hosting-related keywords
-  if(msg.includes("vps") || msg.includes("minecraft") || msg.includes("bot") || msg.includes("domain") || msg.includes("hosting")){
-    return "I can provide detailed information about our VPS, Minecraft servers, Bot Hosting, and Domain plans. Ask me specifics!";
-  }
+  // Custom fixed answers
+  if(msg.includes("what is frostnodes")) return "FrostNodes is a next-gen IT & hosting company offering VPS, Minecraft servers, Bot Hosting, and Domain services. We provide high-performance, secure, and reliable hosting solutions.";
+  if(msg.includes("who is your creator")) return "My creator is Dynamind.";
+  if(msg.includes("powered by")) return "I am powered by ChatGPT.";
+
+  // Hosting explanations
+  if(msg.includes("vps")) return "A VPS (Virtual Private Server) is a virtualized server giving you dedicated resources on a shared physical server. You can host websites, Minecraft servers, bots, or applications with control, performance, and isolation.";
+  if(msg.includes("minecraft")) return "Minecraft server hosting allows you to run multiplayer Minecraft worlds online. FrostNodes provides low-latency servers, instant setup, DDoS protection, and support for mods and plugins.";
+  if(msg.includes("bot")) return "Bot hosting lets you run Discord, Telegram, or other bots 24/7. Our servers ensure uptime, reliability, and easy scaling.";
+  if(msg.includes("domain")) return "Domain hosting is registering and managing domain names for websites or servers. FrostNodes domains are fast, secure, and easy to manage.";
 
   // Default fallback
-  return "I can only answer questions about FrostNodes and hosting services. Try asking about VPS, Minecraft, Bot Hosting, or Domains.";
+  return "I can answer questions about FrostNodes and hosting services. Ask me about VPS, Minecraft servers, Bot Hosting, or Domains.";
 }
 
 async function sendMessage(){
@@ -208,27 +186,26 @@ async function sendMessage(){
   const userText = input.value.trim();
   if(!userText) return;
 
-  // Display user message
+  // User message
   const userMsg = document.createElement('div');
   userMsg.classList.add('chat-message','user');
   userMsg.innerHTML = `<div class="message">${userText}</div>`;
   chatBox.appendChild(userMsg);
+  input.value='';
+  chatBox.scrollTop=chatBox.scrollHeight;
 
-  input.value = '';
-  chatBox.scrollTop = chatBox.scrollHeight;
-
-  // Display bot typing animation
+  // Bot typing animation
   const botMsg = document.createElement('div');
   botMsg.classList.add('chat-message','bot');
-  botMsg.innerHTML = `<div class="message">Thinking...</div>`;
+  botMsg.innerHTML = `<div class="message"><span class="loading-symbol">⟳</span> Thinking...</div>`;
   chatBox.appendChild(botMsg);
-  chatBox.scrollTop = chatBox.scrollHeight;
+  chatBox.scrollTop=chatBox.scrollHeight;
 
   // Simulate AI delay
   setTimeout(()=>{
     botMsg.innerHTML = `<div class="message">${getBotReply(userText)}</div>`;
-    chatBox.scrollTop = chatBox.scrollHeight;
-  },900);
+    chatBox.scrollTop=chatBox.scrollHeight;
+  },1200);
 }
 </script>
 
