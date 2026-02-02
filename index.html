@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FrostNodes | IT Solutions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins}
+body{background:#0b0f1a;color:#fff}
+
+/* NAVBAR */
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 8%;
+  background:#0f1629;
+  position:sticky;
+  top:0;
+  z-index:1000
+}
+nav a{
+  color:#ccc;
+  text-decoration:none;
+  margin:0 14px;
+  font-weight:500;
+  transition:.3s
+}
+nav a:hover{color:#5cc8ff}
+.logo{font-size:22px;font-weight:700;color:#5cc8ff}
+.menu{display:flex;align-items:center}
+
+/* SERVICES DROPDOWN */
+.dropdown{position:relative}
+.dropdown-content{
+  position:absolute;
+  top:45px;
+  left:0;
+  background:#121a30;
+  min-width:220px;
+  border-radius:10px;
+  box-shadow:0 20px 40px rgba(0,0,0,.6);
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.3s
+}
+.dropdown-content a{
+  display:block;
+  padding:14px 18px;
+  border-bottom:1px solid #1c2a52
+}
+.dropdown-content a:last-child{border-bottom:none}
+.dropdown-content a:hover{
+  background:#1c2a52;
+  padding-left:24px
+}
+.dropdown:hover .dropdown-content{
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0)
+}
+
+/* BUTTON */
+.btn{
+  background:#5cc8ff;
+  color:#000;
+  padding:8px 14px;
+  border-radius:6px;
+  font-weight:600
+}
+
+/* HERO */
+.hero{
+  text-align:center;
+  padding:90px 8% 80px;
+  background:radial-gradient(circle at top,#13203d,#0b0f1a)
+}
+
+/* AMD BOUNCING BOX */
+.amd-box{
+  display:inline-block;
+  margin-bottom:30px;
+  padding:14px 28px;
+  border-radius:14px;
+  border:2px solid #5cc8ff;
+  color:#5cc8ff;
+  font-weight:600;
+  animation:jump 1.8s infinite;
+  box-shadow:0 0 18px rgba(92,200,255,.35)
+}
+@keyframes jump{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-22px)}
+}
+
+.hero h1{font-size:46px}
+.hero span{color:#5cc8ff}
+.hero p{
+  color:#aaa;
+  max-width:680px;
+  margin:20px auto
+}
+
+/* WHY CHOOSE */
+section{padding:90px 8%}
+section h2{
+  text-align:center;
+  font-size:34px;
+  margin-bottom:55px
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px
+}
+
+.feature{
+  background:#121a30;
+  border:1px solid #1c2a52;
+  padding:30px;
+  border-radius:16px;
+  transition:.4s;
+  cursor:pointer
+}
+.feature h3{
+  margin-bottom:10px;
+  color:#5cc8ff
+}
+.feature p{
+  color:#bbb;
+  font-size:14px
+}
+
+/* HOVER ANIMATION */
+.feature:hover{
+  transform:translateY(-12px) scale(1.03);
+  box-shadow:0 25px 50px rgba(92,200,255,.18);
+  border-color:#5cc8ff
+}
+
+/* FOOTER */
+footer{
+  text-align:center;
+  padding:30px;
+  background:#0f1629;
+  color:#777
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .features{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:600px){
+  .features{grid-template-columns:1fr}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">❄ FrostNodes</div>
+
+  <div class="menu">
+    <a href="index.html">Home</a>
+
+    <div class="dropdown">
+      <a href="#">Services ▾</a>
+      <div class="dropdown-content">
+        <a href="minecraft.html">Minecraft Hosting</a>
+        <a href="vps.html">VPS Hosting</a>
+        <a href="bot.html">Bot Hosting</a>
+        <a href="domains.html">Domain Plans</a>
+      </div>
+    </div>
+
+    <a href="free.html">Free Plan</a>
+    <a href="about.html">About Us</a>
+    <a href="frost-ai.html">Frost AI</a>
+  </div>
+
+  <div>
+    <a href="account.html">Account</a>
+    <a href="login.html" class="btn">Login with Discord</a>
+  </div>
+</nav>
+
+<div class="hero">
+
+  <div class="amd-box">
+    🚀 Powered by AMD Ryzen™ 9 7950X
+  </div>
+
+  <h1>Next-Gen <span>IT & Hosting Solutions</span></h1>
+  <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
+
+</div>
+
+<section>
+  <h2>Why Choose FrostNodes?</h2>
+
+  <div class="features">
+    <div class="feature">
+      <h3>DDoS Protection</h3>
+      <p>Enterprise-grade protection for your servers</p>
+    </div>
+
+    <div class="feature">
+      <h3>NVMe SSD Storage</h3>
+      <p>Lightning-fast performance with NVMe drives</p>
+    </div>
+
+    <div class="feature">
+      <h3>Instant Setup</h3>
+      <p>Get your server running in minutes</p>
+    </div>
+
+    <div class="feature">
+      <h3>India Location</h3>
+      <p>Low latency for Indian players</p>
+    </div>
+
+    <div class="feature">
+      <h3>24/7 Support</h3>
+      <p>Always here to help you succeed</p>
+    </div>
+
+    <div class="feature">
+      <h3>99.9% Uptime</h3>
+      <p>Reliable infrastructure you can trust</p>
+    </div>
+  </div>
+</section>
+
+<footer>© 2026 FrostNodes. All rights reserved.</footer>
+
+</body>
+</html>
