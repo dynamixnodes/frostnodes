@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>FrostNodes | Support</title>
+<title>Support | FrostNodes</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
 <style>
 :root{
   --accent:#5cc8ff;
-  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
+  --gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
   --bg:#0b0f1a;
   --nav:#0f1629;
   --card:#121a30;
@@ -21,15 +21,15 @@
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
 body{
   background:var(--bg);
   color:#fff;
+  font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
 }
 
-/* ===== NAVBAR (SAME AS HOMEPAGE) ===== */
+/* NAVBAR */
 nav{
   display:flex;
   justify-content:space-between;
@@ -39,6 +39,23 @@ nav{
   position:sticky;
   top:0;
   z-index:1000;
+}
+
+nav a{
+  color:#cfcfcf;
+  text-decoration:none;
+  margin:0 14px;
+  font-weight:500;
+  transition:.25s;
+}
+
+nav a:hover{
+  color:var(--accent);
+}
+
+nav a.active{
+  color:var(--accent);
+  font-weight:600;
 }
 
 .logo{
@@ -55,7 +72,7 @@ nav{
 .logo span{
   font-size:22px;
   font-weight:700;
-  background:var(--accent-gradient);
+  background:var(--gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
@@ -64,15 +81,6 @@ nav{
   display:flex;
   align-items:center;
 }
-
-nav a{
-  color:#cfcfcf;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:500;
-  transition:.25s;
-}
-nav a:hover{color:var(--accent);}
 
 /* DROPDOWN */
 .dropdown{
@@ -130,15 +138,10 @@ nav a:hover{color:var(--accent);}
   color:#000;
 }
 
-/* ===== SUPPORT PAGE CONTENT ===== */
+/* SUPPORT SECTION */
 .support{
-  min-height:80vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  justify-content:center;
   text-align:center;
-  padding:80px 8%;
+  padding:120px 8%;
 }
 
 .support h1{
@@ -146,43 +149,42 @@ nav a:hover{color:var(--accent);}
   margin-bottom:14px;
 }
 
-.support h1 span{
-  background:var(--accent-gradient);
+.support p{
+  color:#aaa;
+  max-width:620px;
+  margin:0 auto 50px;
+}
+
+/* SUPPORT BUTTON */
+.support-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:16px 36px;
+  border-radius:14px;
+  border:2px solid transparent;
+  background:
+    linear-gradient(var(--bg),var(--bg)) padding-box,
+    var(--gradient) border-box;
+  text-decoration:none;
+  font-size:20px;
+  font-weight:700;
+  animation:float 2.5s ease-in-out infinite;
+}
+
+.support-btn span.need{
+  color:#fff;
+}
+
+.support-btn span.help{
+  background:var(--gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
-.support p{
-  color:#aaa;
-  max-width:620px;
-  margin-bottom:50px;
-}
-
-/* FLOATING SUPPORT BUTTON */
-.ticket-btn{
-  padding:18px 44px;
-  font-size:16px;
-  font-weight:700;
-  border-radius:16px;
-  background:
-    linear-gradient(var(--bg),var(--bg)) padding-box,
-    var(--accent-gradient) border-box;
-  border:2px solid transparent;
-  color:#fff;
-  text-decoration:none;
-  transition:.35s;
-  box-shadow:0 0 30px rgba(92,200,255,.45);
-  animation:float 2.5s ease-in-out infinite;
-}
-
-.ticket-btn:hover{
-  transform:scale(1.08);
-  box-shadow:0 0 45px rgba(92,200,255,.75);
-}
-
 @keyframes float{
   0%,100%{transform:translateY(0)}
-  50%{transform:translateY(-16px)}
+  50%{transform:translateY(-18px)}
 }
 
 /* FOOTER */
@@ -191,18 +193,18 @@ footer{
   padding:30px;
   background:var(--nav);
   color:#777;
+  margin-top:100px;
 }
 
 /* RESPONSIVE */
 @media(max-width:700px){
-  .support h1{font-size:34px;}
+  .menu{display:none}
 }
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <nav>
   <div class="logo">
     <img src="/logo.png" alt="FrostNodes Logo">
@@ -225,7 +227,7 @@ footer{
     <a href="/free">Free Plan</a>
     <a href="/about">About Us</a>
     <a href="/ai">Frost AI</a>
-    <a href="/support">Support</a>
+    <a href="/support" class="active">Support</a>
   </div>
 
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9" target="_blank">
@@ -233,18 +235,20 @@ footer{
   </a>
 </nav>
 
-<!-- SUPPORT CONTENT -->
-<div class="support">
-  <h1>Get <span>Support</span></h1>
-  <p>Need help? Our support team is available 24/7.  
-     Open a ticket and we’ll assist you as fast as possible.</p>
+<section class="support">
+  <h1>Get Support via Tickets</h1>
+  <p>
+    Need help with your services? Our support team is available 24/7 through our
+    ticket system on Discord.
+  </p>
 
-  <a class="ticket-btn"
+  <a class="support-btn"
      href="https://discord.com/channels/1293569663694930011/1465184059259883540"
      target="_blank">
-     🎫 Get Support Via Tickets
+    <span class="need">Need</span>
+    <span class="help">Help?</span>
   </a>
-</div>
+</section>
 
 <footer>
   © 2026 FrostNodes. All rights reserved.
