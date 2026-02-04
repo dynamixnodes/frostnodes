@@ -39,19 +39,7 @@ nav{
   padding:14px 8%;
   display:flex;
   align-items:center;
-  gap:18px;
-}
-
-/* HAMBURGER */
-#menu-toggle{
-  display:none;
-}
-
-.hamburger{
-  font-size:26px;
-  cursor:pointer;
-  color:#fff;
-  user-select:none;
+  justify-content:space-between;
 }
 
 /* LOGO */
@@ -72,11 +60,23 @@ nav{
   color:var(--accent);
 }
 
+/* HAMBURGER */
+#menu-toggle{
+  display:none;
+}
+
+.hamburger{
+  font-size:26px;
+  cursor:pointer;
+  color:#fff;
+  user-select:none;
+}
+
 /* MENU */
 .menu{
   position:fixed;
   top:60px;
-  left:-260px;
+  right:-260px;
   width:240px;
   height:100%;
   background:var(--card);
@@ -85,12 +85,12 @@ nav{
   flex-direction:column;
   gap:12px;
   transition:.3s ease;
-  box-shadow:20px 0 40px rgba(0,0,0,.6);
+  box-shadow:-20px 0 40px rgba(0,0,0,.6);
 }
 
 /* OPEN MENU */
 #menu-toggle:checked ~ .menu{
-  left:0;
+  right:0;
 }
 
 .menu a{
@@ -182,15 +182,15 @@ footer{
 <body>
 
 <nav>
-  <!-- HAMBURGER -->
-  <input type="checkbox" id="menu-toggle">
-  <label for="menu-toggle" class="hamburger">☰</label>
-
   <!-- LOGO -->
   <div class="logo">
     <img src="/logo.png" alt="FrostNodes Logo">
     <span>FrostNodes</span>
   </div>
+
+  <!-- HAMBURGER -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="hamburger">☰</label>
 
   <!-- MENU -->
   <div class="menu">
