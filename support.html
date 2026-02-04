@@ -32,37 +32,33 @@ body{
 
 /* NAVBAR */
 nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 8%;
-  background:var(--nav);
   position:sticky;
   top:0;
   z-index:1000;
+  background:var(--nav);
+  padding:14px 8%;
+  display:flex;
+  align-items:center;
+  gap:18px;
 }
 
-nav a{
-  color:#cfcfcf;
-  text-decoration:none;
-  margin:0 14px;
-  font-weight:500;
-  transition:.25s;
+/* HAMBURGER */
+#menu-toggle{
+  display:none;
 }
 
-nav a:hover{
-  color:var(--accent);
+.hamburger{
+  font-size:26px;
+  cursor:pointer;
+  color:#fff;
+  user-select:none;
 }
 
-nav a.active{
-  color:var(--accent);
-  font-weight:600;
-}
-
+/* LOGO */
 .logo{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
 }
 
 .logo img{
@@ -76,9 +72,44 @@ nav a.active{
   color:var(--accent);
 }
 
+/* MENU */
 .menu{
+  position:fixed;
+  top:60px;
+  left:-260px;
+  width:240px;
+  height:100%;
+  background:var(--card);
+  padding:20px;
   display:flex;
-  align-items:center;
+  flex-direction:column;
+  gap:12px;
+  transition:.3s ease;
+  box-shadow:20px 0 40px rgba(0,0,0,.6);
+}
+
+/* OPEN MENU */
+#menu-toggle:checked ~ .menu{
+  left:0;
+}
+
+.menu a{
+  color:#cfcfcf;
+  text-decoration:none;
+  font-weight:500;
+  padding:12px 14px;
+  border-radius:8px;
+  transition:.25s;
+}
+
+.menu a:hover{
+  background:var(--border);
+  color:var(--accent);
+}
+
+.menu a.active{
+  color:var(--accent);
+  font-weight:600;
 }
 
 /* MAIN */
@@ -151,11 +182,17 @@ footer{
 <body>
 
 <nav>
+  <!-- HAMBURGER -->
+  <input type="checkbox" id="menu-toggle">
+  <label for="menu-toggle" class="hamburger">☰</label>
+
+  <!-- LOGO -->
   <div class="logo">
     <img src="/logo.png" alt="FrostNodes Logo">
     <span>FrostNodes</span>
   </div>
 
+  <!-- MENU -->
   <div class="menu">
     <a href="/">Home</a>
     <a href="/minecraft">Minecraft</a>
@@ -164,11 +201,11 @@ footer{
     <a href="/domains">Domains</a>
     <a href="/support" class="active">Support</a>
     <a href="/ai">Frost AI</a>
+    <a href="https://discord.gg/JZW5w9ntg9" target="_blank">Join Discord</a>
   </div>
 </nav>
 
 <div class="container">
-
   <h1>
     <span class="white">Need</span>
     <span class="gradient">Help?</span>
@@ -188,7 +225,6 @@ footer{
   <footer>
     © 2026 FrostNodes. All rights reserved.
   </footer>
-
 </div>
 
 </body>
