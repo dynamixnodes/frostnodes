@@ -155,19 +155,101 @@ nav a:hover{color:var(--accent)}
   50%{transform:translateY(-22px)}
 }
 
-/* SECTIONS */
-section{
+/* SERVICES SECTION (NEW – ONLY ADDITION) */
+.services-section{
   padding:90px 8%;
 }
-section h2{
+
+.services-title{
   text-align:center;
   font-size:34px;
-  margin-bottom:55px;
+  margin-bottom:60px;
 }
-section h2 span{
+
+.services-title span{
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
+}
+
+.services-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:40px;
+}
+
+.service-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  transition:.35s;
+}
+
+.service-card:hover{
+  transform:translateY(-10px);
+  border-color:var(--accent);
+  box-shadow:0 25px 50px rgba(92,200,255,.18);
+}
+
+.service-card img{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+}
+
+.service-content{
+  padding:26px;
+  text-align:center;
+}
+
+.service-content h3{
+  font-size:22px;
+  margin-bottom:18px;
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+
+.service-features{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+  margin-bottom:22px;
+}
+
+.service-feature{
+  background:#1a223d;
+  border-radius:999px;
+  padding:8px 16px;
+  font-size:13px;
+  color:#fff;
+}
+
+.service-btn{
+  display:block;
+  width:100%;
+  padding:16px 0;
+  font-weight:700;
+  text-decoration:none;
+  background:var(--accent-gradient);
+  color:#fff;
+}
+
+/* CMD PROMPT ROW */
+.cmd-row{
+  margin-top:90px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+}
+
+.cmd-text{
+  color:#9aa0b5;
+  font-size:18px;
+  text-align:center;
 }
 
 /* FEATURES */
@@ -183,45 +265,17 @@ section h2 span{
   border-radius:16px;
   transition:.35s;
 }
-.feature h3{
-  margin-bottom:10px;
-  color:var(--accent);
-}
-.feature p{
-  color:#bbb;
-  font-size:14px;
-}
 .feature:hover{
   transform:translateY(-10px);
   box-shadow:0 20px 40px rgba(92,200,255,.18);
   border-color:var(--accent);
 }
+.feature h3{color:var(--accent);}
 
 /* SUPPORT CTA */
 .support-cta{
   text-align:center;
   background:radial-gradient(circle at top,#13203d,#0b0f1a);
-}
-.support-cta p{
-  color:#bbb;
-  margin-bottom:35px;
-}
-.support-btn{
-  display:inline-block;
-  padding:16px 36px;
-  font-weight:700;
-  border-radius:14px;
-  background:
-    linear-gradient(var(--bg),var(--bg)) padding-box,
-    var(--accent-gradient) border-box;
-  border:2px solid transparent;
-  color:#fff;
-  text-decoration:none;
-  transition:.3s;
-}
-.support-btn:hover{
-  transform:scale(1.07);
-  box-shadow:0 0 35px rgba(92,200,255,.6);
 }
 
 /* FOOTER */
@@ -232,8 +286,9 @@ footer{
   color:#777;
 }
 
-/* RESPONSIVE */
 @media(max-width:900px){
+  .services-grid{grid-template-columns:1fr;}
+  .cmd-row{grid-template-columns:1fr;}
   .features{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:600px){
@@ -247,13 +302,12 @@ footer{
 
 <nav>
   <div class="logo">
-    <img src="/logo.png" alt="FrostNodes Logo">
+    <img src="/logo.png">
     <span>FrostNodes</span>
   </div>
 
   <div class="menu">
     <a href="/">Home</a>
-
     <div class="dropdown">
       <a href="#">Services ▾</a>
       <div class="dropdown-content">
@@ -264,15 +318,12 @@ footer{
         <a href="/prompt">CMD Prompt</a>
       </div>
     </div>
-
     <a href="/about">About Us</a>
     <a href="/ai">Frost AI</a>
     <a href="/support">Support</a>
   </div>
 
-  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9" target="_blank">
-    Join Discord
-  </a>
+  <a class="discord-box" href="https://discord.gg/JZW5w9ntg9" target="_blank">Join Discord</a>
 </nav>
 
 <div class="hero">
@@ -281,46 +332,101 @@ footer{
   <p>High-performance Minecraft, VPS, Bot & Domain hosting built for speed and reliability.</p>
 </div>
 
+<!-- SERVICES INSERTED HERE -->
+<section class="services-section">
+  <h2 class="services-title">Our <span>Services</span></h2>
+
+  <div class="services-grid">
+    <div class="service-card">
+      <img src="/mc-thumb.png">
+      <div class="service-content">
+        <h3>Minecraft Server</h3>
+        <div class="service-features">
+          <div class="service-feature">Low Latency</div>
+          <div class="service-feature">DDoS Protection</div>
+          <div class="service-feature">Instant Setup</div>
+        </div>
+      </div>
+      <a href="/minecraft" class="service-btn">View Plans →</a>
+    </div>
+
+    <div class="service-card">
+      <img src="/vps-thumb.png">
+      <div class="service-content">
+        <h3>VPS Hosting</h3>
+        <div class="service-features">
+          <div class="service-feature">NVMe SSD</div>
+          <div class="service-feature">Root Access</div>
+          <div class="service-feature">High Performance</div>
+        </div>
+      </div>
+      <a href="/vps" class="service-btn">View Plans →</a>
+    </div>
+
+    <div class="service-card">
+      <img src="/bot-thumb.png">
+      <div class="service-content">
+        <h3>Bot Hosting</h3>
+        <div class="service-features">
+          <div class="service-feature">24/7 Online</div>
+          <div class="service-feature">Stable</div>
+          <div class="service-feature">Easy Deploy</div>
+        </div>
+      </div>
+      <a href="/bot" class="service-btn">View Plans →</a>
+    </div>
+
+    <div class="service-card">
+      <img src="/domain-thumb.png">
+      <div class="service-content">
+        <h3>Domain Plan</h3>
+        <div class="service-features">
+          <div class="service-feature">Custom DNS</div>
+          <div class="service-feature">Secure</div>
+          <div class="service-feature">Easy Manage</div>
+        </div>
+      </div>
+      <a href="/domain" class="service-btn">View Plans →</a>
+    </div>
+  </div>
+
+  <div class="cmd-row">
+    <div class="cmd-text">
+      Checkout our Hosting Setup, Management Commands and Guides completely for free!
+    </div>
+
+    <div class="service-card">
+      <img src="/prompt-thumb.png">
+      <div class="service-content">
+        <h3>CMD Prompt</h3>
+        <div class="service-features">
+          <div class="service-feature">Free Codes & Commands</div>
+        </div>
+      </div>
+      <a href="/prompt" class="service-btn">Checkout Now →</a>
+    </div>
+  </div>
+</section>
+
 <section>
   <h2>Why Choose <span>FrostNodes</span>?</h2>
-
   <div class="features">
-    <div class="feature">
-      <h3>DDoS Protection</h3>
-      <p>Enterprise-grade protection for your servers.</p>
-    </div>
-    <div class="feature">
-      <h3>NVMe SSD Storage</h3>
-      <p>Ultra-fast performance with NVMe drives.</p>
-    </div>
-    <div class="feature">
-      <h3>Instant Setup</h3>
-      <p>Your services ready in minutes.</p>
-    </div>
-    <div class="feature">
-      <h3>India Location</h3>
-      <p>Low latency for Indian players.</p>
-    </div>
-    <div class="feature">
-      <h3>24/7 Support</h3>
-      <p>Always here when you need help.</p>
-    </div>
-    <div class="feature">
-      <h3>99.9% Uptime</h3>
-      <p>Reliable infrastructure you can trust.</p>
-    </div>
+    <div class="feature"><h3>DDoS Protection</h3><p>Enterprise-grade protection</p></div>
+    <div class="feature"><h3>NVMe SSD</h3><p>Ultra-fast storage</p></div>
+    <div class="feature"><h3>Instant Setup</h3><p>Ready in minutes</p></div>
+    <div class="feature"><h3>India Location</h3><p>Low latency</p></div>
+    <div class="feature"><h3>24/7 Support</h3><p>Always available</p></div>
+    <div class="feature"><h3>99.9% Uptime</h3><p>Maximum reliability</p></div>
   </div>
 </section>
 
 <section class="support-cta">
   <h2>Need <span>Support?</span></h2>
   <p>Open a ticket and get fast assistance from our professional team.</p>
-  <a href="/support" class="support-btn">Get Support Via Tickets</a>
+  <a href="/support" class="service-btn">Get Support Via Tickets</a>
 </section>
 
-<footer>
-  © 2026 FrostNodes. All rights reserved.
-</footer>
+<footer>© 2026 FrostNodes. All rights reserved.</footer>
 
 </body>
 </html>
