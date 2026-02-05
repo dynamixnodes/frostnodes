@@ -71,11 +71,23 @@ nav a:hover{color:var(--accent);}
 }
 .hero p{color:#aaa;max-width:680px;margin:20px auto;}
 
+/* FLOAT ANIMATION */
+@keyframes float {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
 .amd-box{
-  display:inline-block;margin-bottom:30px;
-  padding:14px 28px;border-radius:14px;
+  display:inline-block;
+  margin-bottom:30px;
+  padding:14px 28px;
+  border-radius:14px;
   border:2px solid var(--accent);
-  color:var(--accent);font-weight:600;
+  color:var(--accent);
+  font-weight:600;
+  animation: float 4s ease-in-out infinite;
+  box-shadow:0 0 22px rgba(92,200,255,.25);
 }
 
 /* SERVICES */
