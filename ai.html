@@ -97,17 +97,22 @@ header{text-align:center;padding:60px 20px 30px;}
   border-radius:12px 12px 12px 0;
 }
 
-/* LOADING */
+/* LOADING CIRCLE */
 .loading-symbol{
-  width:16px;
-  height:16px;
-  border:3px solid #5cc8ff;
-  border-top:3px solid #00ffff;
+  display:inline-block;
+  width:20px;
+  height:20px;
+  border:3px solid rgba(92,200,255,0.3);
+  border-top:3px solid #5cc8ff;
   border-radius:50%;
   animation:spin 1s linear infinite;
+  vertical-align:middle;
+  margin-right:6px;
 }
+
 @keyframes spin{
-  to{transform:rotate(360deg);}
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 /* INPUT */
