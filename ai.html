@@ -80,9 +80,10 @@ header{text-align:center;padding:60px 20px 30px;}
 .chat-message.bot{justify-content:flex-start;}
 
 .message{
-  padding:10px 14px;
+  padding:12px 14px;
   border-radius:12px;
-  max-width:75%;
+  max-width:78%;
+  line-height:1.45;
 }
 
 .user .message{
@@ -97,19 +98,19 @@ header{text-align:center;padding:60px 20px 30px;}
   border-radius:12px 12px 12px 0;
 }
 
-/* ✅ PROPER CIRCULAR THINKING LOADER */
+/* THINKING SPINNER */
 .thinking{
   display:flex;
   align-items:center;
   gap:8px;
 }
-.thinking-circle{
+.spinner{
   width:18px;
   height:18px;
-  border:3px solid rgba(92,200,255,.35);
-  border-top:3px solid #5cc8ff;
+  border:3px solid #5cc8ff;
+  border-top:3px solid #00ffff;
   border-radius:50%;
-  animation:spin 0.9s linear infinite;
+  animation:spin 0.8s linear infinite;
 }
 @keyframes spin{
   to{transform:rotate(360deg);}
@@ -126,7 +127,7 @@ input{
   color:#fff;
 }
 button{
-  padding:12px 20px;
+  padding:12px 22px;
   font-size:20px;
   border:none;
   border-radius:8px;
@@ -162,14 +163,14 @@ footer{color:#777;padding:20px;}
     <div class="ai">AI</div>
   </div>
   <div class="tagline">
-    Your friendly hosting assistant — VPS, Minecraft, Bot & Domain help. Powered by ChatGPT.
+    Your friendly hosting assistant — VPS, Minecraft, Bot & Domain help.
   </div>
 </header>
 
 <div class="chat-container">
   <div class="chat-box" id="chatBox"></div>
   <div class="input-container">
-    <input id="userInput" placeholder="Type anything… I’ll understand 😊"
+    <input id="userInput" placeholder="Ask anything about FrostNodes…"
       onkeydown="if(event.key==='Enter') sendMessage()">
     <button onclick="sendMessage()">➣</button>
   </div>
@@ -180,64 +181,38 @@ footer{color:#777;padding:20px;}
 <footer>© 2026 FrostNodes — All rights reserved</footer>
 
 <script>
-let lastTopic = "";
-
-function normalizeInput(text){
+function normalize(text){
   return text.toLowerCase().replace(/[^\w\s]/g,"").trim();
 }
 
 function getBotReply(input){
-  const msg = normalizeInput(input);
+  const msg = normalize(input);
 
-  /* Greetings */
-  if(/hello|hi|hey|how are you/.test(msg)){
-    lastTopic = "greeting";
-    return "Hey! 😄 I’m Frost AI from FrostNodes. How can I help you today?";
-  }
+  if(/hello|hi|hey/.test(msg))
+    return `Hey! 👋 I'm Frost AI.\n\nYou can ask me things like:\n• Best VPS use cases\n• Minecraft server setup\n• Discord bot hosting\n• Domain info`;
 
-  /* DOMAIN */
-  if(msg.includes("domain")){
-    lastTopic = "domain";
-    return "A domain is your website’s address on the internet. It’s what people type to visit your site.";
-  }
+  if(msg.includes("owner") || msg.includes("owners"))
+    return `FrostNodes owners are:\n• Dynamind\n• SunEarrings\n• Monkey D. Luffy`;
 
-  if((msg.includes("example") || msg.includes("examples") || msg.includes("more")) && lastTopic==="domain"){
-    return "Here are some domain examples:\n• frostnodes.in\n• google.com\n• discord.com\n• youtube.com\n• github.io\n\nDomains usually end with extensions like .com, .in, .net, .org.";
-  }
+  if(msg.includes("founder"))
+    return "FrostNodes was founded by DevNikhil.";
 
-  /* VPS */
-  if(msg.includes("vps")){
-    lastTopic = "vps";
-    return "A VPS (Virtual Private Server) is like your own computer on the internet with dedicated resources and full control.";
-  }
+  if(msg.includes("vps"))
+    return `A VPS (Virtual Private Server) is perfect if you want control.\n\nExamples:\n• Minecraft servers\n• Websites (Apache/Nginx)\n• Discord bots\n• VPN or panels\n\nYou get root access & dedicated resources.`;
 
-  if((msg.includes("example") || msg.includes("use")) && lastTopic==="vps"){
-    return "You can use a VPS for:\n• Hosting websites\n• Minecraft servers\n• Discord bots\n• Game panels\n• VPNs";
-  }
+  if(msg.includes("minecraft"))
+    return `Minecraft Hosting lets you run servers 24/7.\n\nExamples:\n• Lifesteal SMP\n• Modded servers\n• Plugins like EssentialsX\n\nYou can manage it via panel & console.`;
 
-  /* MINECRAFT */
-  if(msg.includes("minecraft")){
-    lastTopic = "minecraft";
-    return "Minecraft hosting lets you run a 24/7 multiplayer server with plugins, mods, and DDoS protection.";
-  }
+  if(msg.includes("bot"))
+    return `Bot Hosting keeps your bots online.\n\nExamples:\n• Discord.js bots\n• Python bots\n• Music & moderation bots\n\nNo need to keep your PC on.`;
 
-  /* BOT */
-  if(msg.includes("bot")){
-    lastTopic = "bot";
-    return "Bot hosting keeps your Discord or Telegram bots online 24/7 without keeping your PC on.";
-  }
+  if(msg.includes("domain"))
+    return `A domain is your website address.\n\nExample:\n• frostnodes.in\n• play.frostnodes.in\n\nIt makes your brand professional.`;
 
-  /* COMPANY INFO */
-  if(msg.includes("ceo")) return "The CEO of FrostNodes is Nishit.";
-  if(msg.includes("founder")) return "FrostNodes was founded by DevNikhil.";
-  if(msg.includes("owner")) return "FrostNodes is owned by Dynamind and Monkey D Luffy.";
+  if(msg.includes("support") || msg.includes("help"))
+    return `Need help? 😄\n\nYou can:\n• Open a Discord ticket\n• Ask here for guidance\n• Get setup examples`;
 
-  /* SUPPORT */
-  if(msg.includes("support") || msg.includes("help")){
-    return "You can contact FrostNodes support via Discord tickets for fast assistance.";
-  }
-
-  return "I specialize in FrostNodes services like VPS, Minecraft, bot hosting, and domains. Ask me about any of them!";
+  return `I'm specialized in FrostNodes services.\n\nTry asking:\n• "What can I use a VPS for?"\n• "Minecraft server setup"\n• "Bot hosting examples"`;
 }
 
 function sendMessage(){
@@ -250,20 +225,18 @@ function sendMessage(){
   input.value="";
   chat.scrollTop = chat.scrollHeight;
 
-  const botDiv = document.createElement("div");
-  botDiv.className = "chat-message bot";
-  botDiv.innerHTML = `
-    <div class="message thinking">
-      <span class="thinking-circle"></span>
-      Thinking…
+  const bot = document.createElement("div");
+  bot.className = "chat-message bot";
+  bot.innerHTML = `<div class="message thinking">
+      <div class="spinner"></div> Thinking…
     </div>`;
-  chat.appendChild(botDiv);
+  chat.appendChild(bot);
   chat.scrollTop = chat.scrollHeight;
 
   setTimeout(()=>{
-    botDiv.innerHTML = `<div class="message">${getBotReply(text)}</div>`;
+    bot.innerHTML = `<div class="message">${getBotReply(text).replace(/\n/g,"<br>")}</div>`;
     chat.scrollTop = chat.scrollHeight;
-  },900);
+  }, 900);
 }
 </script>
 
