@@ -5,14 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FrostNodes | VPS Hosting</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --accent:#5cc8ff;
-  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
+  --accent:#5cc8ff;                 /* NAVBAR ONLY */
+  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff); /* NAVBAR ONLY */
+
+  --theme:#8e2bff;                  /* NEW THEME COLOR */
+
   --bg:#0b0f1a;
   --nav:#0f1629;
   --card:#121a30;
@@ -26,59 +30,105 @@
   box-sizing:border-box;
   font-family:'Space Grotesk', system-ui, sans-serif;
 }
-body{background:var(--bg);color:#fff;}
+
+body{
+  background:var(--bg);
+  color:#fff;
+}
+
+/* ================= NAVBAR (UNCHANGED) ================= */
 
 nav{
-  display:flex;justify-content:space-between;align-items:center;
-  padding:14px 8%;background:var(--nav);position:sticky;top:0;z-index:1000;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 8%;
+  background:var(--nav);
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
-nav a{color:#cfcfcf;text-decoration:none;margin:0 14px;font-weight:500;}
+
+nav a{
+  color:#cfcfcf;
+  text-decoration:none;
+  margin:0 14px;
+  font-weight:500;
+}
+
 nav a:hover{color:var(--accent);}
 
-.logo{display:flex;align-items:center;gap:12px;}
+.logo{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
 .logo img{width:34px;}
+
 .logo span{
-  font-size:22px;font-weight:700;
+  font-size:22px;
+  font-weight:700;
   background:var(--accent-gradient);
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
 }
 
 .menu{display:flex;align-items:center;}
+
 .dropdown{position:relative;}
+
 .dropdown-content{
-  position:absolute;top:42px;left:0;
-  background:var(--card);min-width:220px;
-  border-radius:10px;opacity:0;visibility:hidden;
-  transform:translateY(10px);transition:.25s;
+  position:absolute;
+  top:42px;
+  left:0;
+  background:var(--card);
+  min-width:220px;
+  border-radius:10px;
+  opacity:0;
+  visibility:hidden;
+  transform:translateY(10px);
+  transition:.25s;
 }
+
 .dropdown:hover .dropdown-content{
-  opacity:1;visibility:visible;transform:translateY(0);
+  opacity:1;
+  visibility:visible;
+  transform:translateY(0);
 }
+
 .dropdown-content a{
   display:flex;
   align-items:center;
   gap:12px;
   white-space:nowrap;
 }
+
 .drop-icon{
   width:16px;
   height:16px;
   flex-shrink:0;
-
   filter: brightness(0) saturate(100%) invert(69%) sepia(87%)
           saturate(406%) hue-rotate(165deg)
           brightness(101%) contrast(101%);
 }
 
 .discord-box{
-  padding:8px 16px;border-radius:10px;
-  border:2px solid var(--accent);color:var(--accent);
-  font-weight:600;text-decoration:none;
+  padding:8px 16px;
+  border-radius:10px;
+  border:2px solid var(--accent);
+  color:var(--accent);
+  font-weight:600;
+  text-decoration:none;
 }
-.discord-box:hover{background:var(--accent);color:#000;}
 
-/* HERO */
+.discord-box:hover{
+  background:var(--accent);
+  color:#000;
+}
+
+/* ================= HERO ================= */
+
 .hero{
   text-align:center;
   padding:100px 8% 70px;
@@ -92,28 +142,27 @@ nav a:hover{color:var(--accent);}
   margin-bottom:28px;
   padding:14px 26px;
   border-radius:14px;
-  border:2px solid var(--accent);
-  color:var(--accent);
+  border:2px solid var(--theme);
+  color:var(--theme);
   font-weight:600;
-  box-shadow:0 0 22px rgba(92,200,255,.25);
+  box-shadow:0 0 22px rgba(142,43,255,.35);
 }
 
 .vps-box img{
   width:18px;
-  filter: brightness(0) saturate(100%) invert(69%) sepia(87%)
-          saturate(406%) hue-rotate(165deg);
+  filter: brightness(0) saturate(100%) invert(23%) sepia(98%)
+          saturate(7473%) hue-rotate(262deg)
+          brightness(96%) contrast(102%);
 }
 
 .hero h1{
   font-size:46px;
   line-height:1.15;
 }
+
 .hero .white{color:#fff;}
-.hero .blue{
-  background:var(--accent-gradient);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+.hero .blue{color:var(--theme);}
+
 .hero p{
   margin-top:18px;
   color:#aaa;
@@ -122,22 +171,22 @@ nav a:hover{color:var(--accent);}
   margin-right:auto;
 }
 
-/* CPU SWITCH */
-.cpu-switch{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  margin:0 auto 20px;
-  background:#0f1629;
-  padding:6px;
-  border-radius:12px;
-  border:1px solid var(--border);
-}
+/* ================= CPU SWITCH ================= */
+
 .cpu-only{
   display:flex;
   justify-content:center;
   margin:35px 0 25px;
 }
+
+.cpu-switch{
+  display:inline-flex;
+  background:#0f1629;
+  padding:6px;
+  border-radius:12px;
+  border:1px solid var(--border);
+}
+
 .cpu-btn{
   padding:12px 26px;
   border-radius:10px;
@@ -148,29 +197,28 @@ nav a:hover{color:var(--accent);}
 }
 
 .cpu-btn.active{
-  background:var(--accent-gradient);
-  color:#000;
+  background:var(--theme);
+  color:#fff;
 }
 
-/* PLANS */
+/* ================= PLANS ================= */
+
 .plans-wrapper{
-  max-width:1400px;  
-  margin:0 auto 90px; 
-  padding-left:6%;    
+  max-width:1400px;
+  margin:0 auto 90px;
+  padding-left:6%;
   padding-right:4%;
 }
+
 .plans-title{
   text-align:center;
-  margin-top:0;  
   margin-bottom:30px;
   font-size:32px;
 }
+
 .plans-title .white{color:#fff;}
-.plans-title .blue{
-  background:var(--accent-gradient);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
+.plans-title .blue{color:var(--theme);}
+
 .plans-grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
@@ -189,8 +237,8 @@ nav a:hover{color:var(--accent);}
 
 .plan-card:hover{
   transform:translateY(-10px);
-  border-color:var(--accent);
-  box-shadow:0 20px 40px rgba(92,200,255,.18);
+  border-color:var(--theme);
+  box-shadow:0 20px 40px rgba(142,43,255,.25);
 }
 
 @keyframes fadeUp{
@@ -200,20 +248,18 @@ nav a:hover{color:var(--accent);}
 
 .plan-name{
   font-size:22px;
-  color:#fff;
   margin-bottom:8px;
 }
 
 .plan-price{
   font-size:22px;
-  color:var(--accent);
+  color:var(--theme);
   font-weight:700;
 }
 
 .plan-price span{
   color:#888;
   font-size:14px;
-  font-weight:500;
 }
 
 .plan-spec{
@@ -223,23 +269,19 @@ nav a:hover{color:var(--accent);}
   margin-top:12px;
   font-size:14px;
 }
+
 .plan-spec img{
   width:16px;
-  filter: brightness(0) saturate(100%) invert(69%) sepia(87%)
-          saturate(406%) hue-rotate(165deg);
-}
-.plan-spec span{
-  color:#aaa;
-}
-.plan-spec b{
-  color:#fff;
+  filter: brightness(0) saturate(100%) invert(23%) sepia(98%)
+          saturate(7473%) hue-rotate(262deg)
+          brightness(96%) contrast(102%);
 }
 
 .order-btn{
   margin-top:18px;
   width:100%;
   padding:14px 0;
-  background:var(--accent);
+  background:var(--theme);
   color:#fff;
   text-align:center;
   border-radius:12px;
@@ -250,43 +292,49 @@ nav a:hover{color:var(--accent);}
 }
 
 .order-btn:hover{
-  background:#3ab8ff;
-  box-shadow:0 12px 30px rgba(92,200,255,.35);
+  background:#7a1fe0;
+  box-shadow:0 12px 30px rgba(142,43,255,.35);
 }
 
-/* FEATURES */
+/* ================= FEATURES ================= */
+
 .features-section{
   padding-bottom:80px;
 }
+
 .features-section h2{
   text-align:center;
   font-size:34px;
   margin-bottom:45px;
-  background:var(--accent-gradient);
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
 }
+
 .features{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:30px;
   padding:0 8%;
 }
+
 .feature{
   background:var(--card);
   border:1px solid var(--border);
   padding:28px;
   border-radius:16px;
-  transition: .35s ease;
+  transition:.35s;
 }
+
 .feature:hover{
-  transform: translateY(-10px);
-  border-color: var(--accent);
-  box-shadow: 0 20px 40px rgba(92,200,255,.18);
+  transform:translateY(-10px);
+  border-color:var(--theme);
+  box-shadow:0 20px 40px rgba(142,43,255,.25);
 }
-/* RESPONSIVE */
+
+/* ================= RESPONSIVE ================= */
+
 @media(max-width:900px){
-  .plans-grid,.features{grid-template-columns:1fr;}
+  .plans-grid,.features{
+    grid-template-columns:1fr;
+  }
 }
 </style>
 </head>
@@ -304,30 +352,12 @@ nav a:hover{color:var(--accent);}
     <div class="dropdown">
       <a href="/">Services ▾</a>
       <div class="dropdown-content">
-        <a href="/minecraft">
-          <img src="/x_game.svg" class="drop-icon" alt="Minecraft">
-          Minecraft Server
-        </a>
-        <a href="/vps">
-          <img src="/x_server.svg" class="drop-icon" alt="VPS">
-          VPS Hosting
-        </a>
-        <a href="/bot">
-          <img src="/x_bot.svg" class="drop-icon" alt="Bot">
-          Bot Hosting
-        </a>
-        <a href="/domain">
-          <img src="/x_web.svg" class="drop-icon" alt="Domain">
-          Domain Plans
-        </a>
-        <a href="/cmd">
-          <img src="/x_code.svg" class="drop-icon" alt="CMD">
-          CMD Codes
-        </a>
-        <a href="/development">
-          <img src="/x_construct.svg" class="drop-icon" alt="DEV">
-          Development Plan
-        </a>
+        <a href="/minecraft"><img src="/x_game.svg" class="drop-icon">Minecraft Server</a>
+        <a href="/vps"><img src="/x_server.svg" class="drop-icon">VPS Hosting</a>
+        <a href="/bot"><img src="/x_bot.svg" class="drop-icon">Bot Hosting</a>
+        <a href="/domain"><img src="/x_web.svg" class="drop-icon">Domain Plans</a>
+        <a href="/cmd"><img src="/x_code.svg" class="drop-icon">CMD Codes</a>
+        <a href="/development"><img src="/x_construct.svg" class="drop-icon">Development Plan</a>
       </div>
     </div>
     <a href="/about">About Us</a>
@@ -353,97 +383,23 @@ nav a:hover{color:var(--accent);}
     High-performance virtual private servers with Intel Xeon & AMD Ryzen processors
     and India Location for low latency.
   </p>
-
-</section>
-
-<section class="cpu-only">
-  <div class="cpu-switch">
-    <div class="cpu-btn active" onclick="showPlans('amd')">AMD Epyc</div>
-    <div class="cpu-btn" onclick="showPlans('intel')">Intel Xeon</div>
-  </div>
-</section>
-  
-<section class="plans-wrapper">
-  <div class="plans-title">
-    <span class="white"><b>AMD Epyc</b></span>
-    <span class="blue"><b>VPS Plans</b></span>
-  </div>
-
-  <div id="plans" class="plans-grid">
-    <div class="plan-card">
-      <div class="plan-name"><font size=5><b>Starter VPS</b></font></div>
-      <div class="plan-price"><font size=5><b>₹-- </b></font><span><b>/month</b></span></div>
-
-      <div class="plan-spec">
-        <img src="/x_lightning.svg">
-        <span><b>RAM:</b></span> <b>2 GB</b>
-
-      <a
-        class="order-btn"
-        href="https://discord.com/channels/1293569663694930011/1469272403015368795"
-        target="_blank">
-        Order Now!
-      </a>
-      </div>
-    </div>
-  </div>
 </section>
 
 <section class="features-section">
-  <h2>Features of our VPS</h2>
+  <h2>
+    <span style="color:#fff;">Features of our</span>
+    <span style="color:#8e2bff;"> VPS</span>
+  </h2>
+
   <div class="features">
-    <div class="feature"><font color=white size=4><b>Enterprise Processors</b></font></div>
-    <div class="feature"><font color=white size=4><b>NVMe SSD Storage</b></font></div>
-    <div class="feature"><font color=white size=4><b>DDoS Protected</b></font></div>
-    <div class="feature"><font color=white size=4><b>24/7 Uptime</b></font></div>
-    <div class="feature"><font color=white size=4><b>India Proxy</b></font></div>
-    <div class="feature"><font color=white size=4><b>Full Root Access</b></font></div>
+    <div class="feature"><b>Enterprise Processors</b></div>
+    <div class="feature"><b>NVMe SSD Storage</b></div>
+    <div class="feature"><b>DDoS Protected</b></div>
+    <div class="feature"><b>24/7 Uptime</b></div>
+    <div class="feature"><b>India Proxy</b></div>
+    <div class="feature"><b>Full Root Access</b></div>
   </div>
 </section>
-
-<script>
-function showPlans(type){
-  const buttons=document.querySelectorAll('.cpu-btn');
-  buttons.forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
-
-  const title=document.querySelector('.plans-title');
-  const plans=document.getElementById('plans');
-
-  title.innerHTML =
-    type==='amd'
-    ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b>VPS Plans</b></span>'
-    : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b>VPS Plans</b></span>';
-
-plans.innerHTML = `
-  <div class="plan-card">
-    <div class="plan-name">
-      ${type==='amd'
-        ? '<font size=5><b>AMD</b></font>'
-        : '<font size=5><b>Intel</b></font>'}
-      <font size=5><b> Starter VPS</b></font>
-    </div>
-
-    <div class="plan-price">
-      <font size=5><b>₹-- </b></font><span><b>/month</b></span>
-    </div>
-
-    <div class="plan-spec">
-      <img src="/x_lightning.svg">
-      <span><b>RAM:</b></span> <b>2 GB</b>
-    </div>
-
-    <a
-      class="order-btn"
-      href="https://discord.com/channels/1293569663694930011/1469272403015368795"
-      target="_blank">
-      Order Now!
-    </a>
-  </div>
-`;
-
-}
-</script>
 
 </body>
 </html>
