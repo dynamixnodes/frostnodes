@@ -409,6 +409,10 @@ nav a:hover{color:var(--accent);}
         <img src="/x_lightning.svg">
         <span><b>Uptime:</b></span> <b>24/7</b>
       </div>
+      <div class="plan-spec">
+        <img src="/x_lightning.svg">
+        <span><b>OS:</b></span> <b>Ubuntu</b>
+      </div>
 
       <a
         class="order-btn"
@@ -461,7 +465,7 @@ const uptime = {
     up: "24/7"
   },
   intel: {
-    up: "95%"
+    up: "99%"
   }
 };
 
@@ -519,7 +523,11 @@ plans.innerHTML = `
       <img src="/x_lightning.svg">
       <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
     </div>
-
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>OS:</b></span> <b>Ubuntu</b>
+    </div>
+    
     <a
       class="order-btn"
       href="https://discord.com/channels/1293569663694930011/1469272403015368795"
