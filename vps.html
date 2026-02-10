@@ -12,10 +12,12 @@
 
 <style>
 :root{
-  --accent:#5cc8ff;                 /* NAVBAR ONLY */
-  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff); /* NAVBAR ONLY */
+  /* NAVBAR COLORS (DO NOT TOUCH) */
+  --accent:#5cc8ff;
+  --accent-gradient:linear-gradient(135deg,#5cc8ff,#00ffff);
 
-  --theme:#8e2bff;                  /* NEW THEME COLOR */
+  /* PAGE THEME */
+  --theme:#8e2bff;
 
   --bg:#0b0f1a;
   --nav:#0f1629;
@@ -31,10 +33,7 @@
   font-family:'Space Grotesk', system-ui, sans-serif;
 }
 
-body{
-  background:var(--bg);
-  color:#fff;
-}
+body{background:var(--bg);color:#fff;}
 
 /* ================= NAVBAR (UNCHANGED) ================= */
 
@@ -106,11 +105,8 @@ nav a:hover{color:var(--accent);}
 
 .drop-icon{
   width:16px;
-  height:16px;
-  flex-shrink:0;
   filter: brightness(0) saturate(100%) invert(69%) sepia(87%)
-          saturate(406%) hue-rotate(165deg)
-          brightness(101%) contrast(101%);
+          saturate(406%) hue-rotate(165deg);
 }
 
 .discord-box{
@@ -151,8 +147,7 @@ nav a:hover{color:var(--accent);}
 .vps-box img{
   width:18px;
   filter: brightness(0) saturate(100%) invert(23%) sepia(98%)
-          saturate(7473%) hue-rotate(262deg)
-          brightness(96%) contrast(102%);
+          saturate(7473%) hue-rotate(262deg);
 }
 
 .hero h1{
@@ -232,7 +227,6 @@ nav a:hover{color:var(--accent);}
   padding:26px;
   transition:.35s;
   animation:fadeUp .45s ease;
-  min-width:260px;
 }
 
 .plan-card:hover{
@@ -246,35 +240,20 @@ nav a:hover{color:var(--accent);}
   to{opacity:1;transform:translateY(0);}
 }
 
-.plan-name{
-  font-size:22px;
-  margin-bottom:8px;
-}
-
-.plan-price{
-  font-size:22px;
-  color:var(--theme);
-  font-weight:700;
-}
-
-.plan-price span{
-  color:#888;
-  font-size:14px;
-}
+.plan-name{font-size:22px;margin-bottom:8px;}
+.plan-price{font-size:22px;color:var(--theme);font-weight:700;}
 
 .plan-spec{
   display:flex;
   align-items:center;
   gap:10px;
   margin-top:12px;
-  font-size:14px;
 }
 
 .plan-spec img{
   width:16px;
   filter: brightness(0) saturate(100%) invert(23%) sepia(98%)
-          saturate(7473%) hue-rotate(262deg)
-          brightness(96%) contrast(102%);
+          saturate(7473%) hue-rotate(262deg);
 }
 
 .order-btn{
@@ -320,6 +299,7 @@ nav a:hover{color:var(--accent);}
   border:1px solid var(--border);
   padding:28px;
   border-radius:16px;
+  font-weight:700;
   transition:.35s;
 }
 
@@ -341,6 +321,7 @@ nav a:hover{color:var(--accent);}
 
 <body>
 
+<!-- NAVBAR -->
 <nav>
   <div class="logo">
     <img src="/logo.png">
@@ -349,25 +330,14 @@ nav a:hover{color:var(--accent);}
 
   <div class="menu">
     <a href="/">Home</a>
-    <div class="dropdown">
-      <a href="/">Services ▾</a>
-      <div class="dropdown-content">
-        <a href="/minecraft"><img src="/x_game.svg" class="drop-icon">Minecraft Server</a>
-        <a href="/vps"><img src="/x_server.svg" class="drop-icon">VPS Hosting</a>
-        <a href="/bot"><img src="/x_bot.svg" class="drop-icon">Bot Hosting</a>
-        <a href="/domain"><img src="/x_web.svg" class="drop-icon">Domain Plans</a>
-        <a href="/cmd"><img src="/x_code.svg" class="drop-icon">CMD Codes</a>
-        <a href="/development"><img src="/x_construct.svg" class="drop-icon">Development Plan</a>
-      </div>
-    </div>
-    <a href="/about">About Us</a>
-    <a href="/ai">Frost AI</a>
+    <a href="/vps">VPS</a>
     <a href="/support">Support</a>
   </div>
 
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <div class="vps-box">
     <img src="/x_server.svg">
@@ -381,10 +351,39 @@ nav a:hover{color:var(--accent);}
 
   <p>
     High-performance virtual private servers with Intel Xeon & AMD Ryzen processors
-    and India Location for low latency.
+    and India location for low latency.
   </p>
 </section>
 
+<!-- CPU SWITCH -->
+<section class="cpu-only">
+  <div class="cpu-switch">
+    <div class="cpu-btn active" onclick="showPlans('amd')">AMD Epyc</div>
+    <div class="cpu-btn" onclick="showPlans('intel')">Intel Xeon</div>
+  </div>
+</section>
+
+<!-- PLANS -->
+<section class="plans-wrapper">
+  <div class="plans-title">
+    <span class="white"><b>AMD Epyc</b></span>
+    <span class="blue"><b> VPS Plans</b></span>
+  </div>
+
+  <div id="plans" class="plans-grid">
+    <div class="plan-card">
+      <div class="plan-name"><b>Starter VPS</b></div>
+      <div class="plan-price">₹-- <span>/month</span></div>
+      <div class="plan-spec">
+        <img src="/x_lightning.svg">
+        <b>2 GB RAM</b>
+      </div>
+      <a class="order-btn" href="#">Order Now</a>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
 <section class="features-section">
   <h2>
     <span style="color:#fff;">Features of our</span>
@@ -392,14 +391,27 @@ nav a:hover{color:var(--accent);}
   </h2>
 
   <div class="features">
-    <div class="feature"><b>Enterprise Processors</b></div>
-    <div class="feature"><b>NVMe SSD Storage</b></div>
-    <div class="feature"><b>DDoS Protected</b></div>
-    <div class="feature"><b>24/7 Uptime</b></div>
-    <div class="feature"><b>India Proxy</b></div>
-    <div class="feature"><b>Full Root Access</b></div>
+    <div class="feature"><font color=#8e2bff>Enterprise Processors</font></div>
+    <div class="feature"><font color=#8e2bff>NVMe SSD Storage</font></div>
+    <div class="feature"><font color=#8e2bff>DDoS Protected</font></div>
+    <div class="feature"><font color=#8e2bff>24/7 Uptime</font></div>
+    <div class="feature"><font color=#8e2bff>India Proxy</font></div>
+    <div class="feature"><font color=#8e2bff>Full Root Access</font></div>
   </div>
 </section>
+
+<script>
+function showPlans(type){
+  const buttons=document.querySelectorAll('.cpu-btn');
+  buttons.forEach(b=>b.classList.remove('active'));
+  event.target.classList.add('active');
+
+  document.querySelector('.plans-title').innerHTML =
+    type==='amd'
+    ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b> VPS Plans</b></span>'
+    : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b> VPS Plans</b></span>';
+}
+</script>
 
 </body>
 </html>
