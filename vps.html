@@ -244,8 +244,13 @@ nav a:hover{color:var(--accent);}
   border:1px solid var(--border);
   padding:28px;
   border-radius:16px;
+  transition: .35s ease;
 }
-
+.feature:hover{
+  transform: translateY(-10px);
+  border-color: var(--accent);
+  box-shadow: 0 20px 40px rgba(92,200,255,.18);
+}
 /* RESPONSIVE */
 @media(max-width:900px){
   .plans-grid,.features{grid-template-columns:1fr;}
@@ -316,13 +321,15 @@ nav a:hover{color:var(--accent);}
     and India Location for low latency.
   </p>
 
+</section>
+
+<section class="plans-wrapper">
+  
   <div class="cpu-switch">
     <div class="cpu-btn active" onclick="showPlans('amd')">AMD Epyc</div>
     <div class="cpu-btn" onclick="showPlans('intel')">Intel Xeon</div>
   </div>
-</section>
-
-<section class="plans-wrapper">
+  
   <div class="plans-title">
     <span class="white"><b>AMD Epyc</b></span>
     <span class="blue"><b>VPS Plans</b></span>
