@@ -323,8 +323,8 @@ nav a:hover{color:var(--accent);}
 
 <section class="plans-wrapper">
   <div class="plans-title">
-    <span class="white">AMD Epyc</span>
-    <span class="blue">VPS Plans</span>
+    <span class="white"><b>AMD Epyc</b></span>
+    <span class="blue"><b>VPS Plans</b></span>
   </div>
 
   <div id="plans" class="plans-grid">
@@ -363,8 +363,8 @@ function showPlans(type){
 
   title.innerHTML =
     type==='amd'
-    ? '<span class="white">AMD Epyc</span> <span class="blue">VPS Plans</span>'
-    : '<span class="white">Intel Xeon</span> <span class="blue">VPS Plans</span>';
+    ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b>VPS Plans</b></span>'
+    : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b>VPS Plans</b></span>';
 
   plans.innerHTML = `
     <div class="plan-card">
