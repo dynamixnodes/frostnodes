@@ -382,7 +382,7 @@ nav a:hover{color:var(--accent);}
   <div id="plans" class="plans-grid">
     <div class="plan-card">
       <div class="plan-name"><font size=5><b>AMD Starter VPS</b></font></div>
-      <div class="plan-price"><font size=5><b>₹-- </b></font><span><b>/month</b></span></div>
+      <div class="plan-price"><font size=5><b>${prices[type].starter} </b></font><span><b>/month</b></span></div>
 
       <div class="plan-spec">
         <img src="/x_lightning.svg">
@@ -400,7 +400,7 @@ nav a:hover{color:var(--accent);}
 </section>
 
 <section class="features-section">
-  <h2><font color=white>Features of our </font><font color=#5cc8ff>VPS</font></h2>
+  <h2>Features of our VPS</h2>
 
   <div class="features">
     <div class="feature"><font color=#5cc8ff size=4><b>Enterprise Processors</b></font></div>
@@ -413,6 +413,15 @@ nav a:hover{color:var(--accent);}
 </section>
 
 <script>
+const prices = {
+  amd: {
+    starter: "₹150"
+  },
+  intel: {
+    starter: "₹250"
+  }
+};
+
 function showPlans(type){
   const buttons=document.querySelectorAll('.cpu-btn');
   buttons.forEach(b=>b.classList.remove('active'));
@@ -436,7 +445,7 @@ plans.innerHTML = `
     </div>
 
     <div class="plan-price">
-      <font size=5><b>₹-- </b></font><span><b>/month</b></span>
+      <font size=5><b>${prices[type].starter} </b></font><span><b>/month</b></span>
     </div>
 
     <div class="plan-spec">
