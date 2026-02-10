@@ -365,8 +365,8 @@ nav a:hover{color:var(--accent);}
 
 <section class="cpu-only">
   <div class="cpu-switch">
-    <div class="cpu-btn active" onclick="showPlans('amd')">AMD Epyc</div>
-    <div class="cpu-btn" onclick="showPlans('intel')">Intel Xeon</div>
+    <div class="cpu-btn active" onclick="showPlans('amd', this)">AMD Epyc</div>
+    <div class="cpu-btn" onclick="showPlans('intel', this)">Intel Xeon</div>
   </div>
 </section>
   
@@ -403,7 +403,7 @@ nav a:hover{color:var(--accent);}
       </div>
       <div class="plan-spec">
         <img src="/x_lightning.svg">
-        <span><b>Protection:</b></span> <b>DDoS Elite</b>
+        <span><b>Protection:</b></span> <b>DDos Elite</b>
       </div>
       <div class="plan-spec">
         <img src="/x_lightning.svg">
@@ -453,11 +453,11 @@ const ddos = {
 
 const prices = {
   amd: {
-    standard: "₹250"
+    standard: "₹250",
     elite: "₹500"
   },
   intel: {
-    standard: "₹150"
+    standard: "₹150",
     elite: "₹300"
   }
 };
@@ -480,10 +480,10 @@ const uptime = {
   }
 };
 
-function showPlans(type){
-  const buttons=document.querySelectorAll('.cpu-btn');
-  buttons.forEach(b=>b.classList.remove('active'));
-  event.target.classList.add('active');
+function showPlans(type, el){
+  const buttons = document.querySelectorAll('.cpu-btn');
+  buttons.forEach(b => b.classList.remove('active'));
+  el.classList.add('active');
 
   const title=document.querySelector('.plans-title');
   const plans=document.getElementById('plans');
