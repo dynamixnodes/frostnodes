@@ -497,11 +497,8 @@ function showPlans(type, el){
     ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b>VPS Plans</b></span>'
     : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b>VPS Plans</b></span>';
 
-window.onload = () => {
-  const amdBtn = document.querySelectorAll(".cpu-btn")[0];
-  showPlans("amd", amdBtn);
-};
-
+}
+  
 plans.innerHTML = `
   <!-- STANDARD PLAN -->
   <div class="plan-card">
