@@ -497,22 +497,53 @@ plans.innerHTML = `
   <!-- STANDARD PLAN -->
   <div class="plan-card">
     <div class="plan-name">
-      <font size=5><b>${type === 'amd' ? 'AMD' : 'Intel'} Standard VPS</b></font>
+      ${type==='amd'
+        ? '<font size=5><b>AMD</b></font>'
+        : '<font size=5><b>Intel</b></font>'}
+      <font size=5><b> Standard VPS</b></font>
     </div>
 
     <div class="plan-price">
-      <font size=5><b>${prices[type].standard}</b></font>
-      <span><b>/month</b></span>
+      <font size=5><b>${prices[type].standard} </b></font><span><b>/month</b></span>
     </div>
 
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>RAM:</b></span> <b>8 GB DDR4</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>CPU:</b></span> <b>4 vCores</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Disk:</b></span> <b>80 GB NVMe SSD</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Processor:</b></span> <b>${processor[type].cpu}</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Protection:</b></span> <b>${ddos[type].ddo}</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Uptime:</b></span> <b>${uptime[type].up}</b></div>
-
-    <a class="order-btn" href="https://discord.com/channels/1293569663694930011/1469272403015368795" target="_blank">
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>RAM:</b></span> <b>8 GB DDR4</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>CPU:</b></span> <b>4 vcores</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Disk:</b></span> <b>80 GB NVme SSD</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Location:</b></span> <b>India</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Processor:</b></span> <b>${processor[type].cpu}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Protection:</b></span> <b>${ddos[type].ddo}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>OS:</b></span> <b>Ubuntu</b>
+    </div>
+    
+    <a
+      class="order-btn"
+      href="https://discord.com/channels/1293569663694930011/1469272403015368795"
+      target="_blank">
       Order Now!
     </a>
   </div>
@@ -520,27 +551,59 @@ plans.innerHTML = `
   <!-- ELITE PLAN -->
   <div class="plan-card">
     <div class="plan-name">
-      <font size=5><b>${type === 'amd' ? 'AMD' : 'Intel'} Elite VPS</b></font>
+      ${type==='amd'
+        ? '<font size=5><b>AMD</b></font>'
+        : '<font size=5><b>Intel</b></font>'}
+      <font size=5><b> Starter VPS</b></font>
     </div>
 
     <div class="plan-price">
-      <font size=5><b>${prices[type].elite}</b></font>
-      <span><b>/month</b></span>
+      <font size=5><b>${prices[type].starter} </b></font><span><b>/month</b></span>
     </div>
 
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>RAM:</b></span> <b>16 GB DDR4</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>CPU:</b></span> <b>6 vCores</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Disk:</b></span> <b>160 GB NVMe SSD</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Processor:</b></span> <b>${processor[type].cpu}</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Protection:</b></span> <b>DDoS Elite</b></div>
-    <div class="plan-spec"><img src="/x_lightning.svg"><span><b>Uptime:</b></span> <b>${uptime[type].up}</b></div>
-
-    <a class="order-btn" href="https://discord.com/channels/1293569663694930011/1469272403015368795" target="_blank">
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>RAM:</b></span> <b>8 GB DDR4</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>CPU:</b></span> <b>4 cores</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Disk:</b></span> <b>80 GB NVme SSD</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Location:</b></span> <b>India</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Processor:</b></span> <b>${processor[type].cpu}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Protection:</b></span> <b>DDos Standard</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>Uptime:</b></span> <b>${uptime[type].up}</b>
+    </div>
+    <div class="plan-spec">
+      <img src="/x_lightning.svg">
+      <span><b>OS:</b></span> <b>Ubuntu</b>
+    </div>
+    
+    <a
+      class="order-btn"
+      href="https://discord.com/channels/1293569663694930011/1469272403015368795"
+      target="_blank">
       Order Now!
     </a>
   </div>
 `;
 
+}
 </script>
 
 </body>
