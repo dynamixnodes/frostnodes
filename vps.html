@@ -496,10 +496,6 @@ function showPlans(type, el){
     type==='amd'
     ? '<span class="white"><b>AMD Epyc</b></span> <span class="blue"><b>VPS Plans</b></span>'
     : '<span class="white"><b>Intel Xeon</b></span> <span class="blue"><b>VPS Plans</b></span>';
-  document.addEventListener("DOMContentLoaded", () => {
-  const amdBtn = document.querySelector(".cpu-btn.active");
-  showPlans("amd", amdBtn);
-});
 
 window.onload = () => {
   const amdBtn = document.querySelectorAll(".cpu-btn")[0];
