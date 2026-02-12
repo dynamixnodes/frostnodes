@@ -249,6 +249,62 @@ nav a:hover{color:var(--accent);}
     grid-template-columns:1fr;
   }
 }
+
+/* UPGRADE STORE */
+.upgrade-section{
+  padding:0 8% 90px;
+  text-align:center;
+}
+
+.upgrade-title{
+  font-size:34px;
+  margin-bottom:40px;
+  background:var(--accent-gradient);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  font-weight:700;
+}
+
+.upgrade-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:30px;
+  max-width:1000px;
+  margin:0 auto;
+}
+
+.upgrade-box{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:30px 20px;
+  transition:.3s;
+}
+
+.upgrade-box:hover{
+  transform:translateY(-8px);
+  border-color:var(--accent);
+  box-shadow:0 18px 35px rgba(92,200,255,.2);
+}
+
+.upgrade-name{
+  font-size:20px;
+  color:var(--accent);
+  font-weight:700;
+  margin-bottom:10px;
+}
+
+.upgrade-price{
+  font-size:20px;
+  font-weight:700;
+  color:#fff;
+}
+
+.upgrade-unit{
+  font-size:13px;
+  color:#999;
+}
+
 </style>
 </head>
 
@@ -345,6 +401,42 @@ nav a:hover{color:var(--accent);}
     </div>
 
   </div>
+</section>
+
+<section class="upgrade-section">
+
+  <div class="upgrade-title">
+    Upgrade Store
+  </div>
+
+  <div class="upgrade-grid">
+
+    <!-- BACKUP -->
+    <div class="upgrade-box">
+      <div class="upgrade-name">Backup</div>
+      <div class="upgrade-price">
+        ₹50 <span class="upgrade-unit">/unit</span>
+      </div>
+    </div>
+
+    <!-- ALLOCATION -->
+    <div class="upgrade-box">
+      <div class="upgrade-name">Allocation</div>
+      <div class="upgrade-price">
+        ₹75 <span class="upgrade-unit">/unit</span>
+      </div>
+    </div>
+
+    <!-- DATABASE -->
+    <div class="upgrade-box">
+      <div class="upgrade-name">Database</div>
+      <div class="upgrade-price">
+        ₹100 <span class="upgrade-unit">/unit</span>
+      </div>
+    </div>
+
+  </div>
+
 </section>
 
 <section class="features-section">
