@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FrostNodes | IT Labs</title>
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">f
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
@@ -77,6 +77,13 @@ nav a:hover{color:var(--accent);}
   font-weight:600;text-decoration:none;
 }
 .discord-box:hover{background:var(--accent);color:#000;}
+
+.hamburger{
+  display:none;
+  font-size:28px;
+  cursor:pointer;
+  color:var(--accent);
+}
 
 /* HERO */
 .hero{
@@ -277,6 +284,47 @@ footer{
   .service-card{flex-direction:column;}
   .service-card img{width:100%;mask-image:none;}
 }
+
+@media(max-width:900px){
+  .menu{
+    position:absolute;
+    top:70px;
+    right:8%;
+    background:var(--card);
+    flex-direction:column;
+    width:220px;
+    border-radius:14px;
+    padding:14px;
+    gap:10px;
+    display:none;
+    box-shadow:0 20px 40px rgba(0,0,0,.5);
+  }
+
+  .menu.show{
+    display:flex;
+  }
+
+  .hamburger{
+    display:block;
+  }
+}
+
+@media(max-width:900px){
+  .dropdown:hover .dropdown-content{
+    opacity:0;
+    visibility:hidden;
+  }
+
+  .dropdown-content{
+    position:static;
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    background:none;
+    padding-left:10px;
+  }
+}
+
 </style>
 </head>
 
@@ -325,6 +373,10 @@ footer{
   </div>
 
   <a class="discord-box" href="https://discord.gg/JZW5w9ntg9">Join Discord</a>
+
+  <div class="hamburger" id="hamburger">
+    ☰
+  </div>
 </nav>
 
 <div class="hero">
@@ -443,6 +495,15 @@ footer{
   <a href="/support">Ticket Support</a>
   <a href="/ai">AI Support</a>
 </section>
+
+<script>
+  const hamburger = document.getElementById("hamburger");
+  const menu = document.querySelector(".menu");
+
+  hamburger.addEventListener("click", () => {
+    menu.classList.toggle("show");
+  });
+</script>
 
 </body>
 </html>
